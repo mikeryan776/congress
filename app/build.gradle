@@ -1,12 +1,12 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 28
+    compileSdkVersion 31
 
     defaultConfig {
         applicationId "com.sunlightlabs.android.congress"
-        minSdkVersion 16
-        targetSdkVersion 28
+        minSdkVersion 23
+        targetSdkVersion 31
 		versionCode 61
 	    versionName "4.9.2"
     }
@@ -17,13 +17,13 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
         }
     }
-	
+
 	packagingOptions {
         exclude 'META-INF/DEPENDENCIES'
         exclude 'META-INF/LICENSE'
         exclude 'META-INF/NOTICE'
     }
-	
+
 	compileOptions {
         encoding = 'UTF-8'
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -54,7 +54,7 @@ dependencies {
 	//implementation 'com.squareup.okhttp3:okhttp:3.12.1'
     implementation 'com.squareup.picasso:picasso:2.2.0' //2.5.2, 2.71828
 	//implementation 'com.squareup.picasso3:picasso:3.0.0-SNAPSHOT'
-    
+
 	// Test
     testImplementation 'junit:junit:4.13-beta-1'
 }

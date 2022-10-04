@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
       package="com.sunlightlabs.android.congress">
-      
+
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.CALL_PHONE" />
@@ -9,7 +9,7 @@
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="com.android.launcher.permission.INSTALL_SHORTCUT" />
-    
+
     <!-- we can hide the call button if the device has no phone -->
     <uses-feature android:name="android.hardware.telephony" android:required="false" />
 
@@ -29,28 +29,28 @@
         <activity android:name=".MenuMain"
             android:label="@string/app_name"
             android:windowSoftInputMode="adjustPan"
-            >
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-            
+
             <meta-data android:name="android.app.default_searchable"
 				android:value=".BillSearch"
 				/>
         </activity>
-        
+
         <activity android:name=".MenuBills">
             <meta-data android:name="android.app.default_searchable"
 				android:value=".BillSearch"
 				/>
         </activity>
-        
-        <activity android:name=".BillSearch">
+
+        <activity android:name=".BillSearch" android:exported="true">
             <intent-filter>
 				<action android:name="android.intent.action.SEARCH" />
 	        </intent-filter>
-	        
+
 	        <meta-data android:name="android.app.searchable"
 				android:resource="@xml/searchable_bills"
 				/>
@@ -58,7 +58,7 @@
 				android:value=".BillSearch"
 				/>
         </activity>
-        
+
         <activity android:name=".MenuLegislators">
             <meta-data android:name="android.app.default_searchable"
 				android:value=".LegislatorSearch"
@@ -67,12 +67,12 @@
         <activity android:name=".LegislatorLoader" />
         <activity android:name=".LegislatorPager" />
         <activity android:name=".LegislatorCosponsors" />
-        
-        <activity android:name=".LegislatorSearch">
+
+        <activity android:name=".LegislatorSearch" android:exported="true">
             <intent-filter>
 				<action android:name="android.intent.action.SEARCH" />
 	        </intent-filter>
-	        
+
             <meta-data android:name="android.app.searchable"
 				android:resource="@xml/searchable_legislators"
 				/>
@@ -80,21 +80,21 @@
 				android:value=".LegislatorSearch"
 				/>
         </activity>
-        
-        <activity android:name=".BillPager">
+
+        <activity android:name=".BillPager" android:exported="true">
             <intent-filter>
         	    <action android:name="android.intent.action.VIEW" />
         	    <category android:name="android.intent.category.DEFAULT" />
-        	    <data android:scheme="congress" 
+        	    <data android:scheme="congress"
         	        android:host="com.sunlightlabs.android.congress"
-        	        android:pathPrefix="/bill" 
+        	        android:pathPrefix="/bill"
         	        />
         	</intent-filter>
         </activity>
-        
+
         <activity android:name=".MenuVotes" />
-        
-        <activity android:name=".RollInfo">
+
+        <activity android:name=".RollInfo" android:exported="true">
         	<intent-filter>
         		<action android:name="android.intent.action.MAIN" />
         		<category android:name="android.intent.category.DEFAULT" />
@@ -102,44 +102,44 @@
         	<intent-filter>
         	    <action android:name="android.intent.action.VIEW" />
         	    <category android:name="android.intent.category.DEFAULT" />
-        	    <data android:scheme="congress" 
+        	    <data android:scheme="congress"
         	        android:host="com.sunlightlabs.android.congress"
-        	        android:pathPrefix="/roll" 
+        	        android:pathPrefix="/roll"
         	        />
         	</intent-filter>
         </activity>
-        
+
         <activity android:name=".CommitteeListPager" />
         <activity android:name=".CommitteePager" />
-        
+
         <activity android:name=".FloorUpdatePager" />
         <activity android:name=".HearingPager" />
-        	
+
         <activity android:name=".NotificationTabs" />
         <activity android:name=".NotificationSettings" />
         <activity android:name=".NotificationSubscriptions" />
-        	
+
         <activity android:name=".Settings" />
-        
+
         <provider android:name=".providers.SuggestionsProvider"
-              android:authorities="com.sunlightlabs.android.congress.providers.SuggestionsProvider" 
-              />
-        
-        <receiver android:name=".notifications.OnBootReceiver">
+              android:authorities="com.sunlightlabs.android.congress.providers.SuggestionsProvider"
+                  android:exported="false"/>
+
+        <receiver android:name=".notifications.OnBootReceiver" android:exported="true">
         	<intent-filter>
         		<action android:name="android.intent.action.BOOT_COMPLETED" />
         	</intent-filter>
         </receiver>
-        	
+
         <receiver android:name=".notifications.OnAlarmReceiver" />
-        
-        <receiver android:name=".notifications.OnServiceActionReceiver">
+
+        <receiver android:name=".notifications.OnServiceActionReceiver" android:exported="true">
         	<intent-filter>
         		<action android:name="com.sunlightlabs.android.congress.intent.action.START_NOTIFICATION_SERVICE" />
         		<action android:name="com.sunlightlabs.android.congress.intent.action.STOP_NOTIFICATION_SERVICE" />
         	</intent-filter>
         </receiver>
-		
+
 		<service android:name=".notifications.NotificationService" />
 
         <!-- Used for install referrer tracking-->
@@ -155,6 +155,6 @@
         <meta-data android:name="com.google.android.gms.analytics.globalConfigResource"
             android:resource="@xml/analytics"
             />
-		
+
     </application>
 </manifest>
